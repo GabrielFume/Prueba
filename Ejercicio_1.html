@@ -1,0 +1,78 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Ejercicio 1</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.0-rc.2/angular.min.js"></script>
+</head>
+<body ng-app="myapp">
+
+<div ng-controller="MyCtrl">
+
+
+<select ng-model="customSpiceS" ng-options="x for x in number" ng-click="customSpicS">
+</select>
+
+<br><br>
+
+<div>
+
+ <input ng-model="customSpice" placeholder="{{customSpiceS}}">
+ <button ng-click="change(customSpiceS)">Cambio</button>
+ <button ng-click="agregarTarea()">Agregar</button>
+ <p>{{saludo}}</p>
+ <p id="var">The var: {{customSpiceS}}</p>
+ <p>Select size: {{number.length}}</p>
+ <p>{{saludo}}</p>
+
+</div>
+</div>
+
+</body>
+
+<script>
+
+
+var myApp = angular.module('myapp', []);
+
+myApp.controller('MyCtrl', ['$scope','$rootScope', function($scope, $rootScope) {
+    //$scope.customSpice = $scope.customSpiceS;
+
+      $rootScope.number = ["one","thow","three","four","five"];
+
+    $scope.change = function(number) {
+
+      for (i = 0; i < number.length; i++) { 
+
+          if ($scope.number[i] == $scope.customSpiceS) {
+
+          $scope.number[i] = $scope.customSpice;
+
+        }
+    }
+
+      $scope.saludo = "hola " + $scope.customSpice;
+        
+    };
+
+    $scope.agregarTarea = function (customSpiceS) {
+
+       
+
+         if ($scope.customSpice != null){
+
+              $scope.number.push($scope.customSpice);
+
+
+         }
+     
+    };
+
+
+
+}]);
+
+
+</script>
+</html>

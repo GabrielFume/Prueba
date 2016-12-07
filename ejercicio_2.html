@@ -1,0 +1,98 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Ejercicio 2</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.0-rc.2/angular.min.js"></script>
+</head>
+<body ng-app="myApp">
+
+<div ng-controller="SpicyController">
+
+<select ng-model="customSpiceS" ng-options="x for x in names" ng-click="customSpicS">
+</select>
+
+<br><br>
+
+<div>
+
+ <input ng-model="customSpiceS" placeholder="{{customSpiceS}}">
+ <button ng-click="agregarTarea()">Agregar</button>
+ <p>The var: {{customSpiceS}}</p>
+ <p>Select size: {{names.length}}</p>
+ <p>{{saludo}}</p>
+
+</div>
+
+<br><br>
+
+<select ng-model="customSpice" ng-options="x for x in names" ng-click="customSpicS">
+</select><br><br>
+
+<div>
+
+ <input ng-model="customSpice">
+ <button ng-click="add()">Agregar</button>
+ <p>The var: {{customSpice}}</p>
+ <p>Select size: {{names.length}}</p>
+ <p>{{saludo}}</p>
+
+</div>
+
+<label for="">change the.var:</label>
+<input ng-model="customSpiceS">
+<br>
+<label for="">change the.var:</label>
+<input ng-model="customSpice">
+</div>
+
+
+
+</body>
+
+<script>
+
+
+var myApp = angular.module('myApp', []);
+
+myApp.controller('SpicyController', ['$scope','$rootScope', function($scope, $rootScope) {
+    $scope.customSpiceS = $scope.customSpiceS;
+
+    $scope.customSpice = $scope.customSpice;
+
+    $rootScope.names = ["one","thow","three","four","five"];
+
+    $scope.agregarTarea = function (customSpice) {
+
+       
+
+         if ($scope.customSpiceS != null){
+
+              $scope.names.push($scope.customSpiceS);
+
+
+         }
+     
+    };
+
+    $scope.add = function (customSpice) {
+
+       
+
+         if ($scope.customSpice != null){
+
+              $scope.names.push($scope.customSpice);
+
+
+         }
+     
+    };
+
+
+
+}]);
+
+
+</script>
+</html>
